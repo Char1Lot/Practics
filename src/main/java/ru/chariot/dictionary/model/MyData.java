@@ -1,13 +1,13 @@
 package ru.chariot.dictionary.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.*;
+import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Entity
-@lombok.Data
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
