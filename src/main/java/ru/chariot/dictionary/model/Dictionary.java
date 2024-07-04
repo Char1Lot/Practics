@@ -8,11 +8,11 @@ import jakarta.persistence.Id;
 import lombok.*;
 
 @Entity
-@Data
+@lombok.Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class dictionary {
+public class Dictionary {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

@@ -7,11 +7,11 @@ import jakarta.persistence.Id;
 import lombok.*;
 
 @Entity
-@Data
+@lombok.Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class data {
+public class MyData {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
