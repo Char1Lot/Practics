@@ -4,9 +4,6 @@ spring:
     url: jdbc:postgresql://localhost:5432/Practics
     username: postgres
     password: 8526
-    jpa:
-      hibernate:
-        ddl-auto: update
 
   liquibase:
     change-log: db/changelog/main-changelog.xml

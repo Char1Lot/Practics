@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.Builder;
+
 
 @Entity
 @Data
@@ -23,5 +23,4 @@ public class Dictionary {
     private String code;
     @Column(name = "description", nullable = true)
     private String description;
-
 }
