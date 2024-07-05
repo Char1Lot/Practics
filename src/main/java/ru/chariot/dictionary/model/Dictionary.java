@@ -1,10 +1,7 @@
 package ru.chariot.dictionary.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import lombok.Data;
 import lombok.AllArgsConstructor;
@@ -13,15 +10,18 @@ import lombok.Builder;
 
 @Entity
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "dictionary")
 public class Dictionary {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id" , nullable = false, unique = true)
     private Long id;
+    @Column(name = "code", nullable = false)
     private String code;
+    @Column(name = "description", nullable = true)
     private String description;
 
 }
