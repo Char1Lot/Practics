@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ru.chariot.dictionary.model.Dictionary;
 
 @Repository
-public interface dictionaryReposetory extends JpaRepository<Dictionary, Long> {
+public interface DictionaryReposetory extends JpaRepository<Dictionary, Long> {
 }
