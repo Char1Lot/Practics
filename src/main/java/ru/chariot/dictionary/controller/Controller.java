@@ -3,14 +3,16 @@ package ru.chariot.dictionary.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.chariot.dictionary.model.Dictionary;
-import ru.chariot.dictionary.model.MyData;
+import ru.chariot.dictionary.model.Data;
+import ru.chariot.dictionary.service.DataService;
 import ru.chariot.dictionary.service.DictionaryService;
 
 @AllArgsConstructor
 @RestController
 public class Controller {
 
-    DictionaryService dictionaryServise;
+    DictionaryService dictionaryService;
+    DataService dataService;
 
     @RequestMapping("/dictionaries")
     @GetMapping
@@ -20,24 +22,22 @@ public class Controller {
 
     @RequestMapping("/dictionaries/records")
     @GetMapping
-    public MyData getDictRec(){
-        return new MyData(1L, 1L, "aaa", "bbb");
+    public Data getDictRec(){
+        return new Data(1L, 1L, "aaa", "bbb");
     }
 
     @PostMapping("/dictionaries")
     public long addDictionary(@RequestBody Dictionary dictionary){
 
-        return dictionaryServise.saveDictionary(dictionary);
+        return dictionaryService.saveDictionary(dictionary);
 
     }
 
     @PostMapping("/dictionaries/records")
-    public long addDictionary(@RequestBody MyData data){
+    public long addDictionary(@RequestBody Data data){
 
-        return 1L;
+        return dataService.saveData(data);
 
     }
-
-
 
 }

@@ -1,19 +1,17 @@
 package ru.chariot.dictionary.model;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
+@lombok.Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "data")
-public class MyData {
+public class Data {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
     @Column(name = "dictionary_id", nullable = false)

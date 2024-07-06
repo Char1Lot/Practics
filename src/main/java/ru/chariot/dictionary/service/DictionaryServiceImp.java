@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Service
 @AllArgsConstructor
-public class DictionaryServiseImp implements DictionaryService{
+public class DictionaryServiceImp implements DictionaryService{
 
     DictionaryReposetory dictionaryReposetory;
 
@@ -28,4 +28,5 @@ public class DictionaryServiseImp implements DictionaryService{
     public Map<String, String> updateDictionary(Long id) {
         return Map.of();
     }
+
 }
