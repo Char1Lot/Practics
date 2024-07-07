@@ -1,9 +1,9 @@
 package ru.chariot.dictionary.controller;
 
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.websocket.server.PathParam;
 import lombok.AllArgsConstructor;
-import org.springdoc.core.annotations.RouterOperation;
 import org.springframework.web.bind.annotation.*;
 import ru.chariot.dictionary.model.Dictionary;
 import ru.chariot.dictionary.model.Data;
@@ -21,8 +21,10 @@ public class Controller {
     DataService dataService;
 
     @GetMapping("/{dictionaryId}")
-    @Tag(name = "Получение записи", description = "Получение записи из таблицы dictionary основываясь на ее уникальном идентификаторе, тело запроса не запрашивается, айди искомой записи указать в конце url, пример: dictionaries/1")
-    public Dictionary getDictionary(@PathVariable Long dictionaryId){
+    @Tag(name = "Получение записи", description = "Получение записи из таблицы dictionary основываясь на ее уникальном идентификаторе, тело запроса не запрашивается")
+    public Dictionary getDictionary(
+            @PathVariable("dictionaryId")
+            @Parameter(name ="dictionaryId", description = "id справочника", example = "1") Long dictionaryId){
 
         return dictionaryService.findDictionaryById(dictionaryId);
 
@@ -46,8 +48,10 @@ public class Controller {
 
 
     @PutMapping("/{dictionaryId}")
-    @Tag(name = "Изменение записи", description = "Изменение записи в таблице dictionary, в тело запроса передать такие параметры как code(строка), description(строка), айди изменяемой записи указать в конце url, пример: dictionaries/1")
-    public Dictionary putDictionary(@PathVariable Long dictionaryId, @RequestBody Dictionary dictionary){
+    @Tag(name = "Изменение записи", description = "Изменение записи в таблице dictionary, в тело запроса передать такие параметры как code(строка), description(строка)")
+    public Dictionary putDictionary(
+            @PathVariable("dictionaryId")
+            @Parameter(name ="dictionaryId", description = "id записи в справочнике", example = "1") Long dictionaryId, @RequestBody Dictionary dictionary){
 
         return dictionaryService.updateDictionary(dictionaryId, dictionary);
 
@@ -55,7 +59,9 @@ public class Controller {
 
     @DeleteMapping("/del/{dictionaryId}")
     @Tag(name = "Удаление записи", description = "Удаление записи из таблицы dictionary, айди записи указать в конце url, пример: dictionaries/1")
-    public Dictionary delDictionary(@PathVariable Long dictionaryId){
+    public Dictionary delDictionary(
+            @PathVariable("dictionaryId")
+            @Parameter(name ="dictionaryId", description = "id справочника", example = "1") Long dictionaryId){
 
         return dictionaryService.deleteDictionary(dictionaryId);
 
@@ -63,7 +69,9 @@ public class Controller {
 
     @GetMapping("/records/{recordId}")
     @Tag(name = "Получение записи", description = "Получение записи из таблицы data основываясь на ее уникальном идентификаторе, тело запроса не запрашивается, айди искомой записи указать в конце url, пример: dictionaries/records/1")
-    public Data getDictRec(@PathVariable Long recordId){
+    public Data getDictRec(
+            @PathVariable("recordId")
+            @Parameter(name ="recordId", description = "id справочника", example = "1") Long recordId){
         return dataService.findDataById(recordId);
     }
 
@@ -83,7 +91,9 @@ public class Controller {
 
     @PutMapping("/records/{recordId}")
     @Tag(name = "Изменение записи", description = "Изменение записи в таблице data, в тело запроса передать такие параметры как dictionary_id(положительное целое число), code(строка), value(строка), айди изменяемой записи указать в конце url, пример: dictionaries/records/1")
-    public Data updateRecord(@PathVariable Long recordId, @RequestBody Data data){
+    public Data updateRecord(
+            @PathVariable("recordId")
+            @Parameter(name ="recordId", description = "id записи в справочнике", example = "1") Long recordId, @RequestBody Data data){
 
         return dataService.updateData(recordId, data);
 
@@ -91,7 +101,9 @@ public class Controller {
 
     @DeleteMapping("/records/del/{recordId}")
     @Tag(name = "Удаление записи", description = "Удаление записи из таблицы dictionary, айди записи указать в конце url, пример: dictionaries/records/1")
-    public Data delRecord(@PathVariable Long recordId){
+    public Data delRecord(
+            @PathVariable("recordId")
+            @Parameter(name ="recordId", description = "id записи в справочнике", example = "1") Long recordId){
 
         return dataService.deleteData(recordId);
 
